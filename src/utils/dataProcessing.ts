@@ -120,17 +120,24 @@ export const groupByCompany = (users: UserData[], settings = defaultSettings): C
     // Cap the score at 100
     churnRiskScore = Math.min(churnRiskScore, 100);
     
-    companies.push({
-      domain,
-      users,
-      userCount: users.length,
-      activeUsers,
-      inactiveUsers,
-      lastActiveDate,
-      avgDaysSinceLastActive,
-      churnRiskScore,
-      userType
-    });
+  companies.push({
+  domain,
+  users,
+  userCount: users.length,
+  activeUsers,
+  inactiveUsers,
+  lastActiveDate,
+  avgDaysSinceLastActive,
+  churnRiskScore,
+  userType,
+  
+  // Add your new fields here
+  quarterlyPatternScore: 0,
+  featureAdoptionScore: 0,
+  userTrend: 'stable',
+  supportHealthScore: 0,
+  compositeHealthScore: 0
+});
   });
   
   // Sort by churn risk score (highest first)
