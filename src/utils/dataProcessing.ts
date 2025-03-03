@@ -124,7 +124,7 @@ export const groupByCompany = (users: UserData[], settings = defaultSettings): C
       churnRiskScore,
       userType,
       
-      // Add your new fields here
+      // New fields with default values
       quarterlyPatternScore: 0,
       featureAdoptionScore: 0,
       userTrend: 'stable',
@@ -135,7 +135,6 @@ export const groupByCompany = (users: UserData[], settings = defaultSettings): C
   
   // Sort by churn risk score (highest first)
   return companies.sort((a, b) => b.churnRiskScore - a.churnRiskScore);
-};
 };
 
 // Calculate overall metrics for a set of companies
@@ -161,6 +160,22 @@ export const calculateChurnMetrics = (companies: CompanyData[], settings = defau
     averageChurnScore
   };
 };
+
+// Placeholder function for future implementation
+// When implementing, uncomment and provide actual logic
+/*
+// Group user activity by quarter
+const groupByQuarter = (userActivity: { date: Date; userId: string }[]) => {
+  // Implementation needed
+  return [];
+};
+
+// Calculate score based on quarterly patterns
+const scoreBasedOnQuarterlyPatterns = (quarterActivity: any) => {
+  // Implementation needed
+  return 0;
+};
+
 // Analyze seasonal patterns in user activity
 export const analyzeSeasonalPatterns = (company: CompanyData): number => {
   const userActivity = company.users.map(user => ({
@@ -178,4 +193,4 @@ export const analyzeSeasonalPatterns = (company: CompanyData): number => {
   // Implementation details would depend on your specific business rules
   return scoreBasedOnQuarterlyPatterns(quarterActivity);
 };
-
+*/
