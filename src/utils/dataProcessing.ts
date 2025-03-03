@@ -153,3 +153,20 @@ export const calculateChurnMetrics = (companies: CompanyData[], settings = defau
     averageChurnScore
   };
 };
+// Analyze seasonal patterns in user activity
+export const analyzeSeasonalPatterns = (company: CompanyData): number => {
+  const userActivity = company.users.map(user => ({
+    date: new Date(user.lastSeen),
+    userId: user.userId
+  }));
+  
+  // Group by quarter
+  const quarterActivity = groupByQuarter(userActivity);
+  
+  // Calculate expected patterns based on company type and industry
+  // Return a score representing how well they match expected patterns
+  // Higher score = matches expected seasonal patterns
+  
+  // Implementation details would depend on your specific business rules
+  return scoreBasedOnQuarterlyPatterns(quarterActivity);
+};
