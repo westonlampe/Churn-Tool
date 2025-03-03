@@ -69,6 +69,13 @@ export const groupByCompany = (users: UserData[], settings = defaultSettings): C
     const userType = users[0]?.companyName === 'Client Users' 
       ? 'Client Users' 
       : 'Firm Users';
+    // Initialize new fields with default values
+    quarterlyPatternScore: 0,
+    featureAdoptionScore: 0,
+    userTrend: 'stable',
+    supportHealthScore: 0,
+    compositeHealthScore: 0,
+      ;
     
     // Calculate metrics
     const now = new Date();
@@ -170,3 +177,4 @@ export const analyzeSeasonalPatterns = (company: CompanyData): number => {
   // Implementation details would depend on your specific business rules
   return scoreBasedOnQuarterlyPatterns(quarterActivity);
 };
+
