@@ -69,13 +69,6 @@ export const groupByCompany = (users: UserData[], settings = defaultSettings): C
     const userType = users[0]?.companyName === 'Client Users' 
       ? 'Client Users' 
       : 'Firm Users';
-    // Initialize new fields with default values
-    quarterlyPatternScore: 0,
-    featureAdoptionScore: 0,
-    userTrend: 'stable',
-    supportHealthScore: 0,
-    compositeHealthScore: 0,
-      ;
     
     // Calculate metrics
     const now = new Date();
@@ -120,7 +113,7 @@ export const groupByCompany = (users: UserData[], settings = defaultSettings): C
     // Cap the score at 100
     churnRiskScore = Math.min(churnRiskScore, 100);
     
-      companies.push({
+    companies.push({
       domain,
       users,
       userCount: users.length,
@@ -130,17 +123,19 @@ export const groupByCompany = (users: UserData[], settings = defaultSettings): C
       avgDaysSinceLastActive,
       churnRiskScore,
       userType,
-  
-  // Add your new fields here
+      
+      // Add your new fields here
       quarterlyPatternScore: 0,
       featureAdoptionScore: 0,
       userTrend: 'stable',
       supportHealthScore: 0,
       compositeHealthScore: 0
+    });
   });
   
   // Sort by churn risk score (highest first)
   return companies.sort((a, b) => b.churnRiskScore - a.churnRiskScore);
+};
 };
 
 // Calculate overall metrics for a set of companies
