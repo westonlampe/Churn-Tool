@@ -17,6 +17,17 @@ export interface UserData {
   paidCustomer: string;
   firmUsers: string;
   companyId: string;
+  // New fields
+  roleCategory: string; // Admin, Standard, Read-only
+  featureUsage: {
+    leaseAccounting: number;
+    fixedAssets: number;
+    journalEntries: number;
+  };
+  sessionDuration: number; // Average time spent per session
+  supportTicketsOpened: number;
+  supportTicketsClosed: number;
+  trainingCompleted: boolean;
 }
 
 export interface CompanyData {
@@ -29,6 +40,12 @@ export interface CompanyData {
   avgDaysSinceLastActive: number;
   churnRiskScore: number;
   userType: 'Client Users' | 'Firm Users';
+  // New fields
+  quarterlyPatternScore: number; // How well they follow expected quarterly patterns
+  featureAdoptionScore: number; // How many features they regularly use
+  userTrend: 'growing' | 'stable' | 'declining';
+  supportHealthScore: number;
+  compositeHealthScore: number;
 }
 
 export interface ChurnRiskMetrics {
