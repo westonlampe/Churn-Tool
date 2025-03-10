@@ -6,6 +6,7 @@ import CompanyList from './CompanyList';
 import MetricsOverview from './MetricsOverview';
 import ExportData from './ExportData';
 import SettingsPanel from './SettingsPanel';
+import ActivityTicker from './ActivityTicker';
 import { useSettings } from '../context/SettingsContext';
 
 const ChurnRiskDashboard: React.FC = () => {
@@ -83,6 +84,8 @@ const ChurnRiskDashboard: React.FC = () => {
                 </button>
               </div>
             </div>
+
+            <ActivityTicker companies={activeTab === 'client' ? clientCompanies : firmCompanies} />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {clientMetrics && (
